@@ -46,9 +46,13 @@ const config = {
       template: './src/index.html'
     }),
     new webpack.optimize.CommonsChunkPlugin({
-      async: 'vendor',
-      name: 'runtime',
-      minChunks: Infinity
+      name: 'node-static',
+      filename: 'node-static.js',
+      minChunks(module, count) {          
+          // var context = module.context;
+          // return context && context.indexOf('node_modules') >= 0;
+          return count >= 1;
+      }
     })
   ]
 };

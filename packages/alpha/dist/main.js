@@ -226,7 +226,6 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 			}
 
 			var getAllNames = function getAllNames(arr) {
-				debugger;
 				return _lodash2.default.map(arr, 'name');
 			};
 

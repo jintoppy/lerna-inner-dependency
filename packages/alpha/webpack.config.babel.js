@@ -15,7 +15,8 @@ const config = {
     filename: '[name].js'
   },
   externals: [
-    'lodash'
+    'lodash',
+    'beta'
     // function(context, request, callback){
     //     console.log(context);
     //     if(context.indexOf('node_modules') > -1){

@@ -17141,7 +17141,7 @@ module.exports = function(module) {
   }
 }.call(this));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1), __webpack_require__(11)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0), __webpack_require__(11)(module)))
 
 /***/ }),
 
@@ -17268,7 +17268,6 @@ var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol
 			}
 
 			var getAllNames = function getAllNames(arr) {
-				debugger;
 				return _lodash2.default.map(arr, 'name');
 			};
 
