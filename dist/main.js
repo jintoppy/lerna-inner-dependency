@@ -86,7 +86,7 @@
 /******/ 		if (__webpack_require__.nc) {
 /******/ 			script.setAttribute("nonce", __webpack_require__.nc);
 /******/ 		}
-/******/ 		script.src = __webpack_require__.p + "" + chunkId + ".js";
+/******/ 		script.src = __webpack_require__.p + "" + ({}[chunkId]||chunkId) + ".bundle.js";
 /******/ 		var timeout = setTimeout(onScriptComplete, 120000);
 /******/ 		script.onerror = script.onload = onScriptComplete;
 /******/ 		function onScriptComplete() {
@@ -147,33 +147,6 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, exports) {
-
-var g;
-
-// This works in non-strict mode
-g = (function() {
-	return this;
-})();
-
-try {
-	// This works if eval is allowed (see CSP)
-	g = g || Function("return this")() || (1,eval)("this");
-} catch(e) {
-	// This works if the window reference is available
-	if(typeof window === "object")
-		g = window;
-}
-
-// g can still be undefined, but nothing to do about it...
-// We return undefined, instead of nothing here, so it's
-// easier to handle this case. if(!global) { ...}
-
-module.exports = g;
-
-
-/***/ }),
-/* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {/*global window, global*/
@@ -263,7 +236,34 @@ function consoleAssert(expression) {
     }
 }
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+
+/***/ }),
+/* 1 */
+/***/ (function(module, exports) {
+
+var g;
+
+// This works in non-strict mode
+g = (function() {
+	return this;
+})();
+
+try {
+	// This works if eval is allowed (see CSP)
+	g = g || Function("return this")() || (1,eval)("this");
+} catch(e) {
+	// This works if the window reference is available
+	if(typeof window === "object")
+		g = window;
+}
+
+// g can still be undefined, but nothing to do about it...
+// We return undefined, instead of nothing here, so it's
+// easier to handle this case. if(!global) { ...}
+
+module.exports = g;
+
 
 /***/ }),
 /* 2 */
@@ -973,7 +973,7 @@ function callbackify(original) {
 }
 exports.callbackify = callbackify;
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4), __webpack_require__(1)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4), __webpack_require__(0)))
 
 /***/ }),
 /* 3 */
@@ -985,21 +985,27 @@ exports.callbackify = callbackify;
 console.log('hello');
 
 document.getElementById('btn-to-load-alpha').addEventListener('click', function () {
-    __webpack_require__.e/* import() */(0).then(__webpack_require__.bind(null, 10)).then(function (_ref) {
-        var getData = _ref.getData;
-
+    // import('alpha').then(({getData}) => {
+    //     console.log(getData());
+    // });
+    __webpack_require__.e/* require.ensure */(0).then((function (require) {
+        var getData = __webpack_require__(10).getData;
         console.log(getData());
-    });
+    }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 });
 
 document.getElementById('btn-to-load-beta').addEventListener('click', function () {
-    __webpack_require__.e/* import() */(1).then(__webpack_require__.bind(null, 9)).then(function (beta1) {
-        debugger;
-        var getAllNames = beta1.default;
+    // import('beta/dist/beta1').then(beta1 => {
+    //     debugger;
+    //     const getAllNames = beta1.default;
+    //     console.log(getAllNames([{name: 'h'}, {name: 'e'}]));
+    // });
+    __webpack_require__.e/* require.ensure */(1).then((function (require) {
+        var getAllNames = __webpack_require__(9).default;
         console.log(getAllNames([{ name: 'h' }, { name: 'e' }]));
-    });
+    }).bind(null, __webpack_require__)).catch(__webpack_require__.oe);
 });
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
 /* 4 */
@@ -1727,7 +1733,7 @@ var objectKeys = Object.keys || function (obj) {
   return keys;
 };
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(1)))
 
 /***/ }),
 /* 8 */

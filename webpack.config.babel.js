@@ -11,7 +11,8 @@ const config = {
   entry: './src/index.js',
   output: {
     path: path.resolve(originalCwd, 'dist'),
-    filename: '[name].js'
+    filename: '[name].js',
+    chunkFilename: '[name].bundle.js'
   },
 
   devtool: '',
